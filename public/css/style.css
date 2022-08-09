@@ -1,0 +1,44 @@
+* {
+  font-family: sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  align-items: center;
+  justify-content: center;
+}
+
+nav {
+  display: flex;  
+  align-items: center;
+  padding: 25px;
+  margin-left: 25px;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+}
+
+nav ul li {
+  gap: 1em;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.big-font {
+  font-size: 5rem;
+}
+
+.drawing-board {
+  border:1px solid black;
+}

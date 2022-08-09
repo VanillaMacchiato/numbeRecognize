@@ -5,7 +5,7 @@
 .container {
   display: flex;
   flex-direction: column;
-  padding: 15px;
+  padding: 10px;
   align-items: center;
   justify-content: center;
 }
@@ -13,7 +13,7 @@
 nav {
   display: flex;  
   align-items: center;
-  padding: 25px;
+  padding: 15px;
   margin-left: 25px;
 }
 
@@ -35,10 +35,22 @@ nav ul li {
   align-items: center;
 }
 
+nav ul li a {
+  transform: translate(0, 25%);
+}
+
 .big-font {
   font-size: 5rem;
 }
 
 .drawing-board {
   border:1px solid black;
+}
+
+#dummy-canvas {
+  display: none;
+}
+
+#dummy-img {
+  display: none;
 }

@@ -83,8 +83,6 @@ const runPrediction = (img) => {
     // send to the document
     document.getElementById('result-number').innerText = prediction.argMax(1).dataSync()[0];
 
-    // document.getElementById('prob-list').child;
-    // document.getElementById('prob-list').appendChild
     updateBarChart(Array.from(prediction.dataSync()));
   };
 
@@ -135,12 +133,10 @@ const initializeBarChart = (data) => {
 
   createAxisLeft(data);
   createAxisBottom(data);
-
-  return svg;
 };
 
 const clearBarChart = () => {
-  let bars = svg.selectAll('.bars').remove();
+  svg.selectAll('.bars').remove();
 };
 
 const updateBarChart = (arr) => {
@@ -162,40 +158,13 @@ const updateBarChart = (arr) => {
       .append('rect')
       .attr('class', 'bar')
       .attr('x', (d) => x(d.name))
-      // .attr('y', (d) => y(0))
       .attr('width', x.bandwidth())
-      // .attr('height', 0)
       .style('fill', 'aquamarine')
-      // animation
-      // .transition()
-      // .duration(750)
       .attr('y', (d) => y(d.value))
       .attr('height', (d) => Math.max(0, HEIGHT - y(d.value)))
       .style('margin', '10px');
-
-    // addLabelToBars(bars);
   }
 
-  // function addLabelToBars(bars) {
-  //   bars
-  //     .append('text')
-  //     .style('opacity', 0)
-  //     .text((d) => d.value)
-  //     .attr('x', (d) => x(d.name) + x.bandwidth() / 2)
-  //     .attr('y', (d) => y(d.value) - 5)
-  //     .attr('text-anchor', 'middle')
-  //     .style('font-familty', 'sans-serif')
-  //     .style('font-size', 12)
-  //     .style('opacity', '1')
-  //     .transition()
-  //     .duration(1000)
-  //     .tween('text', function (d) {
-  //       var i = d3.interpolateRound(0, d.value);
-  //       return function (t) {
-  //         d3.select(this).text(i(t));
-  //       };
-  //     });
-  // }
 
   createBars(data);
 };

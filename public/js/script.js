@@ -40,17 +40,17 @@ const useDrawingCanvas = (canvas, ctx) => {
     }
 
     const boundary = canvas.getBoundingClientRect();
-    ctx.lineTo(e.clientX - boundary.left, e.clientY - boundary.top);
+    const xPosition = e.clientX ||e.touches[0].clientX;
+    const yPosition = e.clientY ||e.touches[0].clientY;
+    ctx.lineTo(xPosition - boundary.left, yPosition - boundary.top);
     ctx.stroke();
   };
 
-  canvas.addEventListener('mousedown', (e) => {
+  const handleDrawingStart = (e) => {
     isPainting = true;
-  });
+  };
 
-  canvas.addEventListener('mousemove', draw);
-
-  canvas.addEventListener('mouseup', (e) => {
+  const handleDrawingEnd = (e) => {
     isPainting = false;
     ctx.stroke();
     ctx.beginPath();
@@ -58,7 +58,16 @@ const useDrawingCanvas = (canvas, ctx) => {
     const img = canvas.toDataURL('image/png');
 
     runPrediction(img);
-  });
+  };
+
+  canvas.addEventListener('mousedown', handleDrawingStart);
+  canvas.addEventListener('touchstart', handleDrawingStart);
+
+  canvas.addEventListener('mousemove', draw);
+  canvas.addEventListener('touchmove', draw);
+
+  canvas.addEventListener('mouseup', handleDrawingEnd);
+  canvas.addEventListener('touchend', handleDrawingEnd);
 };
 
 const runPrediction = (img) => {
@@ -103,11 +112,20 @@ const convertToMono = (arr, width, height) => {
   return result;
 };
 
-// BAR CHART
+/* BAR CHART */
 let HEIGHT = 300,
   WIDTH = 500,
+  paddingInner = 0.25,
   margin = { top: 30, right: 0, bottom: 60, left: 30 };
-let x = d3.scaleBand().range([0, WIDTH]).paddingInner(0.25);
+
+// responsive bar chart
+const mediaQuery = window.matchMedia('(max-width: 600px)');
+if (mediaQuery.matches) {
+  WIDTH = 300;
+  paddingInner = 0.1;
+}
+
+let x = d3.scaleBand().range([0, WIDTH]).paddingInner(paddingInner);
 let y = d3.scaleLog().range([HEIGHT, 0]);
 let svg;
 
@@ -141,7 +159,6 @@ const clearBarChart = () => {
 
 const updateBarChart = (arr) => {
   const data = arr.map((e, i) => ({ name: i.toString(), value: e }));
-  console.log(data);
 
   clearBarChart();
   function createBars(data) {
@@ -164,7 +181,6 @@ const updateBarChart = (arr) => {
       .attr('height', (d) => Math.max(0, HEIGHT - y(d.value)))
       .style('margin', '10px');
   }
-
 
   createBars(data);
 };

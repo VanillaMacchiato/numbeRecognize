@@ -2,20 +2,31 @@
   <div class='container'>
     <h1 id="title">NumbeRecognize</h1>
     <p class="subtitle">Drag your mouse over the canvas below to begin drawing (single digit only)</p>
-    {{>drawing-canvas}}
-    <div class="container">
-      <div class='container'>
-        {{>result}}
+    <div class="row">
+      <div class="column">
+        {{>drawing-canvas}}
+        <div class="container">
+          {{>toolbar}}
+        </div>
       </div>
-      <div class='container'>
-        {{>chart}}
+      <div class="column">
+        <div class="container">
+          {{>chart}}
+          {{>result}}
+        </div>
       </div>
     </div>
   </div>
 </section>
+<br>
 <section id="how-it-works">
-  <div class="container">
+  <div class="container maxwidth-800">
     {{>how-it-works}}
+  </div>
+</section>
+<section id="about">
+  <div class="container maxwidth-800">
+    {{>about}}
   </div>
 </section>
 <script src='./js/script.js'></script>

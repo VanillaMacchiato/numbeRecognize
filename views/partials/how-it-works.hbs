@@ -1,1 +1,44 @@
 <h1>How It Works</h1>
+<p>What's behind the prediction of the single digit number above is called
+  <b>Convolutional Neural Network (CNN)</b>
+  which is a variant of Artificial Neural Network (ANN). ANN can be tasked for classification (like in this web app for
+  example), regression, anomaly detection, etc. ANN is a form of deep learning, a subset of machine learning. It
+  requires training data to be fed into it for recognizing pattern in the training data. This web app however, uses
+  MNIST digit as the training data which can be found on
+  <a href='https://www.kaggle.com/competitions/digit-recognizer'>Kaggle</a>. The network model and learning process is
+  made with the help of TensorFlow library in Python. The model is then deployed to the web using TensorFlow.js CDN.
+</p>
+<p>
+  The CNN architecture which used in this web app that may look overkill, but received a score of a bit over 99% in validation
+  accuracy:
+  <ol>
+    <li>Input Layer with input size of 28 x 28 x 1</li>
+    <li>
+      Convolutional Layer (32 units) with ReLU activation and kernel size of 3x3
+    </li>
+    <li>
+      Max pooling layer with pool size of 2x2
+    </li>
+    <li>
+      Convolutional Layer (128 units) with ReLU activation and kernel size of 3x3
+    </li>
+    <li>
+      Max pooling layer with pool size of 2x2
+    </li>
+    <li>
+      Convolutional Layer (256 units) with ReLU activation and kernel size of 3x3
+    </li>
+    <li>
+      Max pooling layer with pool size of 2x2
+    </li>
+    <li>
+      Fully Connected Layer (512 units) with ReLU activation
+    </li>
+    <li>
+      Fully Connected Layer (128 units) with ReLU activation
+    </li>
+    <li>
+      Fully Connected Layer (10 units) with softmax normalization
+    </li>
+  </ol>
+</p>

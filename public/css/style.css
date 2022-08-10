@@ -48,7 +48,7 @@ nav ul li a {
 }
 
 .drawing-board {
-  border:1px solid black;
+  padding-top: 50px;
 }
 
 #title {
@@ -57,10 +57,7 @@ nav ul li a {
 
 #drawing-board {
   touch-action: none;
-}
-
-.drawing-board {
-  margin-top: 25px;
+  border:1px solid black;
 }
 
 #dummy-canvas {
@@ -77,4 +74,8 @@ nav ul li a {
 
 .column {
   flex: 50%;
+}
+
+.maxwidth-800 {
+  max-width: 800px;
 }

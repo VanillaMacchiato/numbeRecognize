@@ -1,5 +1,5 @@
-* {
-  font-family: sans-serif;
+html {
+  scroll-behavior: smooth;
 }
 
 .container {
@@ -43,8 +43,24 @@ nav ul li a {
   font-size: 5rem;
 }
 
+.subtitle {
+  text-align: center;
+}
+
 .drawing-board {
   border:1px solid black;
+}
+
+#title {
+  font-size: 60px;
+}
+
+#drawing-board {
+  touch-action: none;
+}
+
+.drawing-board {
+  margin-top: 25px;
 }
 
 #dummy-canvas {
@@ -53,4 +69,12 @@ nav ul li a {
 
 #dummy-img {
   display: none;
+}
+
+.row {
+  display: flex;
+}
+
+.column {
+  flex: 50%;
 }
